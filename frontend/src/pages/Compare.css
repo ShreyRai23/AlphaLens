@@ -1,0 +1,221 @@
+/* ── Compare Page Layout ─────────────────────────────────── */
+.compare-page { min-height: 100vh; background: var(--bg); padding-top: 100px; }
+
+.compare-main {
+  padding: var(--space-8) var(--space-6);
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.compare-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.compare-title {
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-1);
+}
+.compare-sub {
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+/* ── Selector Card ───────────────────────────────────────── */
+.compare-selector {
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(250,249,255,0.8));
+  backdrop-filter: blur(20px);
+}
+
+.selector-slots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+@media (max-width: 640px) {
+  .selector-slots { grid-template-columns: 1fr; }
+}
+
+.selector-slot { display: flex; flex-direction: column; gap: var(--space-2); }
+
+.slot-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+.slot-select { cursor: pointer; }
+
+.slot-loading, .slot-empty {
+  font-size: 14px;
+  color: var(--text-tertiary);
+  padding: var(--space-4);
+  text-align: center;
+}
+
+.selector-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-3);
+}
+
+.compare-btn { padding: 14px 32px; font-size: 16px; font-weight: 700; }
+
+.compare-error {
+  color: var(--coral);
+  font-size: 14px;
+  font-weight: 500;
+  background: var(--coral-soft);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+}
+
+/* ── Best Pick Banner ────────────────────────────────────── */
+.best-pick-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+  padding: var(--space-6) var(--space-8);
+  background: linear-gradient(135deg, #FFF9E6, #FFF3C4);
+  border: 1.5px solid #F59E0B44;
+}
+.best-pick-icon { font-size: 40px; line-height: 1; flex-shrink: 0; }
+.best-pick-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--amber);
+  margin-bottom: var(--space-2);
+}
+.best-pick-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* ── Company Cards ───────────────────────────────────────── */
+.compare-cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+@media (max-width: 768px) {
+  .compare-cards-row { grid-template-columns: 1fr; }
+}
+
+.compare-company-card {
+  padding: var(--space-6);
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+.compare-company-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.cc-header { display: flex; align-items: center; gap: var(--space-3); }
+.cc-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.cc-name {
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.cc-badges { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.cc-scores {
+  display: flex;
+  justify-content: space-around;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.cc-score-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+.cc-score-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cc-summary {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.cc-link { align-self: flex-start; font-size: 13px; }
+
+/* ── Score Chart ─────────────────────────────────────────── */
+.compare-chart {
+  padding: var(--space-6);
+}
+.compare-chart-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: var(--space-6);
+  color: var(--text-primary);
+}
+
+/* ── Bull / Bear (reuses Report-page classes) ────────────── */
+.compare-args-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.compare-args-outer {
+  border-radius: var(--radius-xl);
+  padding: var(--space-5) var(--space-5) var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.args-company {
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: var(--space-4);
+}
+
+/* bull-bear-row, arg-col, arg-col-header, arg-icon,
+   arg-title, arg-list, arg-item, arg-bull, arg-bear
+   — all defined in Report.css and shared globally */
