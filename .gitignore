@@ -13,6 +13,11 @@ dist/
 build/
 frontend/dist/
 
+# Large media files (exceeds GitHub 50MB limit — serve locally or via CDN)
+*.mp4
+*.mov
+*.avi
+
 # Logs
 *.log
 npm-debug.log*
