@@ -9,6 +9,10 @@
   <img src="https://img.shields.io/badge/Gemini-8E75B2?style=for-the-badge&logo=googlebard&logoColor=white" alt="Gemini" />
 </div>
 
+<div align="center">
+  <h3>🌍 Live Demo: <a href="https://alpha-lens-sable.vercel.app">https://alpha-lens-sable.vercel.app</a></h3>
+</div>
+
 <br />
 
 ## Overview
