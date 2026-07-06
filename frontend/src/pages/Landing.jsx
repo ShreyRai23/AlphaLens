@@ -188,7 +188,7 @@ export default function Landing() {
               <div className="sample-header">
                 <div>
                   <div className="sample-company">Apple Inc.</div>
-                  <div className="sample-date text-muted text-sm">Analysis · July 2025</div>
+                  <div className="sample-date text-muted text-sm">Analysis · July 2026</div>
                 </div>
                 <div className="sample-verdict-block">
                   <div className="sample-verdict-pill pill pill-pass">↓ PASS</div>
@@ -215,7 +215,7 @@ export default function Landing() {
               <div className="sample-header">
                 <div>
                   <div className="sample-company">NVIDIA</div>
-                  <div className="sample-date text-muted text-sm">Analysis · July 2025</div>
+                  <div className="sample-date text-muted text-sm">Analysis · July 2026</div>
                 </div>
                 <div className="sample-verdict-block">
                   <div className="sample-verdict-pill pill pill-invest">↑ INVEST</div>
@@ -295,7 +295,7 @@ export default function Landing() {
           </div>
 
           <div className="footer-bottom">
-            <span className="text-muted text-xs">&copy; 2025 AlphaLens by Altuni AI Labs. All research is AI-generated and for informational purposes only. Not financial advice.</span>
+            <span className="text-muted text-xs">&copy; 2026 AlphaLens by Altuni AI Labs. All research is AI-generated and for informational purposes only. Not financial advice.</span>
             <div className="footer-bottom-pills">
               <span className="pill" style={{background:'var(--border)',color:'var(--text-secondary)',fontSize:11}}>v1.0.0</span>
             </div>
