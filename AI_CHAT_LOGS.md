@@ -184,10 +184,7 @@ The plan is updated. Here's what changed:
 
 ### 👤 User (At 4/7/2026, 7:52:45 pm)
 
-Use all the api keys given below and then acc to the implementation plan, create the complete working backend of the project. 
-Tavily api : [REDACTED]
-Mongodb uri: [REDACTED] (add a google dns resolver in code coz it given dns error on my network)
-Gemini 2.5 flash api key: [REDACTED]
+I have created an .env file and added all the required API keys (Tavily, MongoDB URI, Gemini) there manually. According to the implementation plan, create the complete working backend of the project. Note: add a google dns resolver in code coz it gives dns error on my network.
 
 ---
 
