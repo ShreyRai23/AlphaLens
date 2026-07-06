@@ -2,7 +2,7 @@
 
 import { getToken, clearAuth } from './auth.js';
 
-const BASE = '/api'; // Proxied to http://localhost:5000 by Vite
+const BASE = import.meta.env.VITE_API_URL || '/api'; // Proxied locally, absolute URL in production
 
 const request = async (method, path, body = null) => {
   const token = getToken();
