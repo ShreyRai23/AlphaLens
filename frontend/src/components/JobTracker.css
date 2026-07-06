@@ -1,0 +1,122 @@
+.job-tracker { display: flex; flex-direction: column; gap: var(--space-12); width: 100%; }
+
+.tracker-step-wrapper { display: flex; flex-direction: column; }
+
+.tracker-step {
+  display: flex;
+  align-items: stretch; /* Stretch so icon col matches text height */
+  gap: var(--space-6);
+  position: relative;
+  transition: opacity var(--transition-normal);
+}
+.tracker-step.pending { opacity: 0.45; }
+
+.step-icon-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the icon vertically */
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  width: 44px;
+}
+
+.step-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-pill);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 16px;
+  flex-shrink: 0;
+  transition: all var(--transition-normal);
+  position: relative;
+  z-index: 2; /* Icon sits above the connector line */
+}
+.tracker-step.pending .step-icon { background: var(--border); color: var(--text-tertiary); }
+
+.step-check { font-size: 18px; }
+.step-num   { font-size: 15px; }
+
+/* Pulsing dot for active */
+.step-pulse-dot {
+  width: 12px; height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  animation: dotPulse 1s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.4); opacity: 0.7; }
+}
+
+/* Connector line */
+.step-connector {
+  position: absolute;
+  top: 0; /* Starts at the very top of the step */
+  bottom: calc(var(--space-12) * -1); /* Extends exactly across the gap to the next step */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  z-index: 1; /* Sits behind the icon */
+  background: var(--border);
+  overflow: hidden;
+  border-radius: 0;
+}
+.connector-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--invest);
+  transform: scaleY(0);
+  transform-origin: top;
+  border-radius: 99px;
+}
+.step-connector.filled .connector-fill {
+  transform: scaleY(1);
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+.step-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-height: 44px; /* Match icon height */
+}
+.step-label { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+.step-desc  { font-size: 13px; color: var(--text-secondary); }
+
+.step-status-pill {
+  flex-shrink: 0;
+}
+
+/* Running pill pulse */
+.pulse-pill { animation: pillGlow 1.2s ease-in-out infinite; }
+@keyframes pillGlow {
+  0%, 100% { box-shadow: none; }
+  50%       { box-shadow: 0 0 0 4px rgba(139,92,246,0.2); }
+}
+
+.tracker-complete {
+  display: flex; align-items: center; gap: var(--space-3);
+  background: var(--invest-soft);
+  border: 1.5px solid var(--invest-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  font-weight: 700; font-size: 15px; color: var(--invest);
+  margin-top: var(--space-4);
+  animation: fadeUp 0.4s both;
+}
+.complete-icon { font-size: 24px; }
+
+.tracker-failed {
+  background: var(--pass-soft); color: var(--pass);
+  border: 1.5px solid var(--pass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4); font-weight: 700; font-size: 14px;
+  margin-top: var(--space-4);
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
