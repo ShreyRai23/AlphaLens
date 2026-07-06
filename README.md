@@ -27,6 +27,8 @@ Beyond standard text generation, the application features a robust multi-step re
 * **Node.js** (v18 or higher recommended)
 * **MongoDB URI** (A local or Atlas connection string)
 * **Google Gemini API Key** (Required for the LLM engine)
+* **Tavily API Key** (Required for real-time data harvesting)
+* **JWT Secret** (Required for authentication)
 
 ### Setup Instructions
 
@@ -47,6 +49,8 @@ Beyond standard text generation, the application features a robust multi-step re
    PORT=5000
    MONGODB_URI=your_mongodb_connection_string
    GEMINI_API_KEY=your_gemini_api_key
+   TAVILY_API_KEY=your_tavily_api_key
+   JWT_SECRET=your_jwt_secret_string
    ```
 
 3. **Start the Application:**
@@ -85,7 +89,7 @@ The backend saves these generated reports to MongoDB, exposing them via RESTful 
 ## Key Decisions & Trade-offs
 
 * **LangGraph over Monolithic Prompts:** I chose to use LangGraph to create a deterministic state machine rather than relying on a single massive prompt. *Why:* This allows for isolated retries, easier debugging of specific research facets (e.g., financials vs. sentiment), and prevents the LLM from hallucinating by forcing it to answer specific sub-queries sequentially.
-* **Simulated Data vs. Paid APIs:** To ensure the application runs seamlessly out-of-the-box for evaluators, the agent simulates real-time financial data retrieval via the LLM's vast knowledge base rather than requiring expensive, rate-limited third-party API keys (like AlphaVantage or Bloomberg).
+* **Tavily Web Search Integration:** Instead of relying entirely on the LLM's static training data, the first stage of the LangGraph pipeline utilizes the Tavily API to perform concurrent, multi-threaded web searches. This ensures the financial analysis and sentiment mapping are based on the latest quarterly earnings, news, and market conditions.
 * **Client-Side PDF Generation:** Instead of using heavy backend headless browsers (like Puppeteer) to generate PDFs, I utilized `html2canvas` and `jsPDF` on the frontend. *Trade-off:* It required complex DOM manipulation and CSS overrides (via `onclone`) to handle unsupported CSS like `backdrop-filter`, but vastly reduces server processing overhead and dependency bloat.
 * **Server-Sent Events (SSE) for Real-Time UI:** Instead of standard HTTP polling, the backend leverages SSE via Node.js `EventEmitter` to stream LangGraph execution states instantly to the frontend. This provides a zero-latency "thinking" UI experience without the heavy overhead of full WebSockets.
 * **Vanilla CSS over Frameworks:** The complex, modern glassmorphism UI was built entirely with custom CSS variables and utility classes rather than Tailwind. *Why:* It provided absolute, granular control over micro-interactions and gradient rendering, resulting in a distinctly premium feel.
